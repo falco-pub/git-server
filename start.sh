@@ -1,6 +1,6 @@
 #!/bin/sh
 
-git clone https://github.com/falco-pub/sshkeys.git keys/
+git clone ${my_keys_repo} keys/
 
 # If there is some public key in keys folder
 # then it copies its contain in authorized_keys file
@@ -14,8 +14,8 @@ fi
 
 # Checking permissions and fixing SGID bit in repos folder
 # More info: https://github.com/jkarlosb/git-server-docker/issues/1
-if [ "$(ls -A /git-server/repos/)" ]; then
-  cd /git-server/repos
+if [ "$(ls -A /rep/)" ]; then
+  cd /rep
   chown -R git:git .
   chmod -R ug+rwX .
   find . -type d -exec chmod g+s '{}' +
