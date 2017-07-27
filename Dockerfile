@@ -1,4 +1,4 @@
-FROM alpine:3.4
+FROM alpine:3.6
 
 MAINTAINER Carlos Bernárdez "carlos@z4studios.com"
 
@@ -21,8 +21,8 @@ WORKDIR /git-server/
 # -D flag avoids password generation
 # -s flag changes user's shell
 RUN mkdir /git-server/keys \
-  && adduser -D -s /usr/bin/git-shell git \
-  && echo git:12345 | chpasswd \
+  && adduser -D -s /usr/bin/git-shell -u 500 git \
+  && passwd -u git \
   && mkdir /home/git/.ssh
 
 # This is a login shell for SSH accounts to provide restricted Git access.
