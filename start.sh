@@ -12,6 +12,8 @@ if [ "$(ls -A /git-server/keys/)" ]; then
   chmod -R 600 .ssh/*
 fi
 
+rm /git-server/keys -rf
+
 # Checking permissions and fixing SGID bit in repos folder
 # More info: https://github.com/jkarlosb/git-server-docker/issues/1
 if [ "$(ls -A /rep/)" ]; then
